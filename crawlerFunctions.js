@@ -32,13 +32,10 @@ const checkProductListed = (err, res, done) => {
 
     if (textList.includes("SEPETE EKLE")) {
       console.log("Product on SALE! GO GO GO!");
-      return true;
     } else if (textList.includes("ÇOK YAKINDA")) {
       console.log("Product not on sale still..");
-      return false;
     } else if (textList.includes("TÜKENDİ")) {
       console.log("You missed it....");
-      return false;
     }
   }
   done();
@@ -53,7 +50,7 @@ const createCrawler = () => {
   c.queue([
     {
       uri:
-      "https://www.vatanbilgisayar.com/sony-playstation-5-digital-surum-oyun-konsolu.html",
+        "https://www.vatanbilgisayar.com/sony-playstation-5-digital-surum-oyun-konsolu.html",
     },
   ]);
 };
