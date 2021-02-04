@@ -22,19 +22,21 @@ const checkProductListed = (err, res, done) => {
      * If it has basket class that means it is on sale
      * Otherwise, the product not listed for sale still..
      */
-    const buttonSpan = productButton.childNodes.find(
+    const buttonSpanList = productButton.childNodes.filter(
       (node) => node.name === "span"
     );
 
-    const text = buttonSpan.childNodes[0].data;
+    const textList = buttonSpanList
+      .map((node) => node.childNodes.map((childNode) => childNode.data))
+      .join(",");
 
-    if (text.includes("SEPETE EKLE")) {
+    if (textList.includes("SEPETE EKLE")) {
       console.log("Product on SALE! GO GO GO!");
       return true;
-    } else if (text.includes("ÇOK YAKINDA")) {
+    } else if (textList.includes("ÇOK YAKINDA")) {
       console.log("Product not on sale still..");
       return false;
-    } else if (text.includes("TÜKENDİ")) {
+    } else if (textList.includes("TÜKENDİ")) {
       console.log("You missed it....");
       return false;
     }
@@ -51,7 +53,7 @@ const createCrawler = () => {
   c.queue([
     {
       uri:
-        "https://www.vatanbilgisayar.com/sony-playstation-5-digital-surum-oyun-konsolu.html",
+      "https://www.vatanbilgisayar.com/sony-playstation-5-digital-surum-oyun-konsolu.html",
     },
   ]);
 };
