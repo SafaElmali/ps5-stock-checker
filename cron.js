@@ -1,5 +1,5 @@
 const cron = require("node-cron");
-const { createCrawler } = require("./crawlerFunctions");
+const { createCrawler } = require("./crawler");
 
 const triggerCron = () => {
   /* running a task every 5 second */
